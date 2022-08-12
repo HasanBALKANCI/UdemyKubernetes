@@ -1,3 +1,14 @@
+Some webpages which are necessary to use kubernetes:
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
+https://brew.sh
+https://minikube.sigs.k8s.io/docs/start/
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
+
+brew install minikube
+brew install kubectl
+kubectl version --client
+
 minikube start
 minikube start --driver=docker
 minikube start --driver=virtualbox
@@ -7,4 +18,16 @@ minikube status
 minikube delete
 minikube stop
 minikube start
+
+* How to see kubectl config
+    - cd ~/.kube && cat config
+kubectl config
+kubectl config get-contexts (yaninda yildiz olan aktiftir)
+kubectl config current-context
+kubectl config use-context docker-desktope (contextti degistirmemiz icin kullanilir)
+
+
+
+
+
 
