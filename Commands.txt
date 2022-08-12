@@ -1,0 +1,10 @@
+minikube start
+minikube start --driver=docker
+minikube start --driver=virtualbox
+
+minikube status
+
+minikube delete
+minikube stop
+minikube start
+
