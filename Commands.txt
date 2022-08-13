@@ -40,6 +40,80 @@ kubectl get pods -A -o json | jq -r ".items[].spec.containers[].name"
 kubectl explain pod (explain objectler icin kullanilir, help komutlar icin kullanilir)
 kubectl explain deployment
 
+PODS:
+    -   kubectl run firstpod --image=nginx --restart=Never
+    -   kubectl get pods
+    -   kubectl get pods -o wide (READY calismasi istenen ve current calisan container sayisini gösterir)
+    -   kubectl describe pods firstpod (adi firstpod olan podun tum ayrintili bilgilerini getir)
+    -   kubectl logs firstpod (firstpodun loglarini görurruz)
+    -   kubectl logs -f firstpod (-f follow canli olarak loglari izleyebiliriz)
+    -   kubectl exec firstpod -- hostname 
+    -   kubectl exec firstpod -- ls
+    -   kubectl exec -it firstpod -- /bin/sh (poda baglanmak icin)
+    -   kubectl delete pods firstpod (firstpod u siler)
+    -   kubectl apply -f pod1.yaml (pod1.yaml -f fileindaki komutlari apply et ve gerekli objeleri olustur)
+    -   kubectl edit pods firstpod (cok sik kullanilan bir yontem degil, bunun yerine verson kontrol sistemiyle
+    kullanmak ve yaml dosyasi uzerinde degisiklik yapmak daha uygun)
+    -   Restart policy:  always, on-failure, never, (uc deger alabilir), 
+    Succeddded, Failed, CrashLoopBackOff (10sn, 20s, 40 s, 5dk bekle mudahaleye kadar her 5 dk da bir yeniden baslatilir)
+    -   Pod yasam dongusu: pending, creating, ImagePullBackOff, Running
+    -   Pod yaml dosyasi okunup oonce etcd ye kaydedilir, sched burayi gözetler degisikligi algilar, 
+    api yeni pod u olusturmaya baslar
+    -   kubectl get pods -w (watch devamli izle)
+
+    -   kubectl delete -f podlife1.yaml
+
+    -   kubectl apply -f podlife1.yaml
+
+Multi Container Pod:
+    -   Ayni podda farkli containerla kullanimi best practice
+    -   Network izolasyonu yoktur, sanki ayni hostta calisiyormus gibi davranirlar
+    -   Tek volume ikisine baglanabilir.Boylece ortak dosyalari kullanabilirler.
+    -   Sildigimizde ayni porttaki tum multi containerlar silinir.
+
+    -   minikube delete
+
+    -   minikube start
+
+    -   ubectl apply -f podmulticontainer.yaml
+
+    -   kubectl get pods -w
+
+    -   kubectl exec -it multicontainer -c webcontainer -- /bin/sh 
+    (multicontainer icerisinde baglanmak istedigimiz container)
+
+    - hostname
+
+    -   kubectl exec -it multicontainer -c sidecarcontainer -- /bin/sh
+
+    -   apt-get update
+    -   apt-get install net-tools
+    -   ifconfig
+
+    -   kubectl port-forward pod/multicontainer 8080:80  (Bilgisayardaki 8080 portunu podun icindeki 80 portuna yonlendirdik)
+
+Init Container
+    - uygulama container baslatilmadan once ilk olarak init container calisir 
+    - Init container yapmasi gerekenleri tamamlar ve kapanir
+    - uygulama container init container kapandiktan sonra calismaya baslar
+    - init container islemlerini tamamlamadan uygulama container baslatilmaz.
+    - Neden kullanilir: app baslamadan önce bagili oldugu farkli uygulamalar varsa kullanilabilir
+
+    - kubectl apply -f poinitcontainer.yaml
+
+Pod Labels,Selector:
+
+    - kubectl get pods -l "app=firstapp, tier != frontend" --show-labels
+    - kubectl get pods -l 'app in (firstapp)' --show-labels
+    - kubectl get pods -l "app=firstapp, app=secondapp" --show-labels
+    - kubectl get pods -l "app notin (firstapp)" --show-labels
+    - kubectl get pods -l '!app' --show-labels
+
+    - kubectl get pods --show-labels
+    -  
+
+
+
 
 
 
