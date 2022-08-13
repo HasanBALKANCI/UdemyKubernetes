@@ -7,4 +7,4 @@ spec:
   containers:
   - name: failcontainer
     image: ubuntu:latest
-    command: ['sh', '-c', 'abc']
+    command: ['sh', '-c', 'abc'] # abc diye komut olmadigindan hata "Error" verip kapanacak
