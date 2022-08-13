@@ -26,6 +26,22 @@ kubectl config get-contexts (yaninda yildiz olan aktiftir)
 kubectl config current-context
 kubectl config use-context docker-desktope (contextti degistirmemiz icin kullanilir)
 
+kubectl
+kubectl cluster-info
+kubectl 
+kubectl cp --help
+kubectl get pods
+kubectl get pods -n kube-system
+kubectl get pods -A
+kubectl get pods -A -o yaml
+kubectl get pods -A -o json
+                    -o jsonpath go-template yaml ysjon wide custom-columns
+kubectl get pods -A -o json | jq -r ".items[].spec.containers[].name"
+kubectl explain pod (explain objectler icin kullanilir, help komutlar icin kullanilir)
+kubectl explain deployment
+
+
+
 
 
 
