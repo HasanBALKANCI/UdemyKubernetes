@@ -81,3 +81,4 @@ $ kubectl explain "obje_tipi"
 Ör: kubectl explain pods
 ```
 ***
+kubectl run --help (burda commands kullanilir. Commands ne ise yaradigini ögrenmek icin --help veya --info)
