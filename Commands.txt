@@ -21,10 +21,15 @@ minikube start
 
 * How to see kubectl config
     - cd ~/.kube && cat config
-kubectl config
-kubectl config get-contexts (yaninda yildiz olan aktiftir)
+kubectl config (bu komutla kullanilabilecek sub commentlere ulasiriz)
+
+alias k=kubectl (kubectl bundan sonra k yazarak kullanabiliriz )
+
+kubectl config get-contexts (yaninda yildiz olan aktiftir, mevcot contextleri listeler)
+
 kubectl config current-context
-kubectl config use-context docker-desktope (contextti degistirmemiz icin kullanilir)
+
+kubectl config use-context docker-desktope (contextti degistirmemiz icin kullanilir, cluster, sunucu degistirilir)
 
 kubectl
 kubectl cluster-info
@@ -52,13 +57,15 @@ PODS:
     -   kubectl exec -it firstpod -- /bin/sh (poda baglanmak icin)
     -   kubectl delete pods firstpod (firstpod u siler)
     -   kubectl apply -f pod1.yaml (pod1.yaml -f fileindaki komutlari apply et ve gerekli objeleri olustur)
-    -   kubectl edit pods firstpod (cok sik kullanilan bir yontem degil, bunun yerine verson kontrol sistemiyle
+    -   kubectl edit pods firstpod (cok sik kullanilan bir yontem degil, bunun yerine versiyon kontrol sistemiyle
     kullanmak ve yaml dosyasi uzerinde degisiklik yapmak daha uygun)
     -   Restart policy:  always, on-failure, never, (uc deger alabilir), 
     Succeddded, Failed, CrashLoopBackOff (10sn, 20s, 40 s, 5dk bekle mudahaleye kadar her 5 dk da bir yeniden baslatilir)
     -   Pod yasam dongusu: pending, creating, ImagePullBackOff, Running
-    -   Pod yaml dosyasi okunup oonce etcd ye kaydedilir, sched burayi gözetler degisikligi algilar, 
+
+    -   Pod yaml dosyasi okunup once etcd ye kaydedilir, sched burayi gözetler degisikligi algilar, 
     api yeni pod u olusturmaya baslar
+
     -   kubectl get pods -w (watch devamli izle)
 
     -   kubectl delete -f podlife1.yaml
