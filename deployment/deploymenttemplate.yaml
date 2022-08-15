@@ -9,4 +9,13 @@ spec:
   selector:
     matchLabels:
       app: frontend
-  template:
+  template: # podlarin özellileri belirtilir
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80  
