@@ -136,4 +136,12 @@ Kubernetes Ag Yapisi:
     - CNI pluginlerin listesine ulasmak icin:
         https://github.com/containernetworking/cni
         https://kubernetes.io/docs/concepts/cluster-administration/networking/
+    - plugin yuklendikten sonra network görevlerini o ustlenir.(calicq)
+    - hala dis dunyadan containerlara/podlara nasil ulasacagimiz cozulmedi.Burda Service ler devreye girer.
+
+Service:
+* Bir dizi Pod uzerinde calisan bir uygulamayi ag hizmeti olarak göstermenin soyut halidir.
+* K8s Pod'lara kendi IP lerini ve bir dizi Pod icin tek DNS ade verir ve bunlar arasinda yuku dengeleyebilir.
+* Cluster IP Objesi, NodePort, LoadBalancer, ExternalName
+* 
 
