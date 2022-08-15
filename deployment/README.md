@@ -105,6 +105,22 @@ DEPLOYMENT
 ReplicaSet:
     * Replica Set in amaci herhangi bir zamanda calisan kararli bir Replika Pod setini surdurmektedir. Genellikle belirli sayida özdes Pod'un kullanilabilirligini garanti etmek icin kullanilir.
     * Deployment objesi olusturdugunda REplicaset olusturur ve podlari bu Replica set olusturur. Guncelleme yaptigimizda yeni bir ReplicaSet olusturulu ve eski Replica Set eski podlari silerken yeni Replica set Desire a göre Podslari ayarlar.
+    * strategy
+        type: Rollingupdate
+
+    tek seferde en fazla   maxUnavailable kadar podu sil. Her seferde bu kadar podu silerek desire ulas. Sayi yerine yuzde de girilebilir.
+
+    tek seferde enfazla maxSurge:2 kadar pod calisiyor olsun.
+
+    Boylece sistemde hic kesinti olmadan devam eder.
+
+
+
+
+
+
 
     - k get replicaset
-    - 
+    - kubectl apply -f deployrolling.yaml
+    - kebectl edit deployment rolldeployment
+    - kubectl set image deployment rolldeployment nginx=httpd:alpine --record=true
