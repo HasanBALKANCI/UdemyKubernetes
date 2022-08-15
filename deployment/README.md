@@ -124,3 +124,16 @@ ReplicaSet:
     - kubectl apply -f deployrolling.yaml
     - kebectl edit deployment rolldeployment
     - kubectl set image deployment rolldeployment nginx=httpd:alpine --record=true
+
+Kubernetes Ag Yapisi:
+
+* K8s kurulumunda pod'lara ip dagitmasi icin bir IP adres araligi (--pod-network-cidr) belirlenir.
+* K8s de her popd bu cidr blogundan atanacak uniq ip ye sahip olur.
+* Ayni cluster icerisindeki tum podlar varsayilan olarak birbirleriyle herhangi bir kisitlama olmadan ve NAT yani network adress translation olmadan haberlesebilirler.
+* Container Network Interface (CNI):
+    - Linux containerlarda ag yapilandirmak icin eklentiler yazilabilmesini saglayan spesifikasyonlari belirler.
+    - CNI yalnizca containerlarin ag baglantisiyla ve containerlar silindikten sonra ayrilan kaynaklarin  kaldirilmasiyla ilgilenir.
+    - CNI pluginlerin listesine ulasmak icin:
+        https://github.com/containernetworking/cni
+        https://kubernetes.io/docs/concepts/cluster-administration/networking/
+
