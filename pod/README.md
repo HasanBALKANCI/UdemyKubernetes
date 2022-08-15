@@ -139,6 +139,37 @@ Init Container:
     2. Init container yapmasi gereken islemi tamamlar ve kapanir.
     3. uygulama Container init container kapandiktan sonra calismaya baslar
     4. init container islemlerini tamamlamadan uygulama container baslatilmaz.
+    5. Yaml dosyasinda containerin altinda degildir. Ayri bir object olarak initcontainer olarak olustturulur.
+    - kubectl apply -f initcontainerpod
+    - kubectl logs -f initcontainerpod -c initcontainer
+    - watch -n 2 kubectl describe pod initcontainer
+    - 
 
-    
 
+Labels:
+    - alias k=kubectl
+    - k get pods -l "app" (labelinda app olanlari listele)
+    - k get pods -l "app=firstapp" (app anahtari firstapp olanlari listele)
+    - k get pods -l "app=firstapp,tier=frontend" --show-labels (app ve tier bu degerlere sahip olanlar. Burda , and anlaminda)
+    - k get pods -l "app=firstapp,tier!=frontend" --show-labels 
+    - k get pods -l 'app in (firstapp)'
+    - k get pods -l 'app in (firstapp, secondapp)' (burda virgul or anlaminda oldu)
+    - k get pods -l '!app' (app olmayanlari listele)
+    - k get pods -l "app in (firstapp), tier notin (frontend)" --show-labels
+    - k label pods pod9 app=thirdapp (bir tane daha label eklenir)
+    - k label --overwrite pods pod9 team
+=team3 (team labelini degistirir)
+    - k label pods --all foo=bar (tum podlara label ekler)
+    - k label nodes minikube hddtype=ssd (bu label minikube uzerinde belirtilmeden container olusturulamaz)
+
+Annotations:
+    - labellar gibi metadataya bilgi ekleyip, cikarma degistirmeye imkan verir.
+    - label hassa bilgilerdi ve tetikleyecegi hususlar olabilir.
+    - annotationslar daha basit ve genel bilgileri icerir.
+    - olusturma kurallari label lar gibidir.
+    - labeldan fafrkli olarak veri kisminda tum karakterler kullanilabilir.
+
+    - k apply -f podannotation.yaml
+    - k annotate pods annotationpod foo=bar (annotation ekler)
+    - k annotate pods annotationpod foo- (foo lari siler)
+    - 
