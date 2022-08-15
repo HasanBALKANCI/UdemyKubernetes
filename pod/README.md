@@ -173,3 +173,23 @@ Annotations:
     - k annotate pods annotationpod foo=bar (annotation ekler)
     - k annotate pods annotationpod foo- (foo lari siler)
     - 
+Namespace:
+    - Firmada tum ekiplerin erisip islem yapabilecegi bir dosya sistemi kurmada fileserver da yönetilemeyecek cok buyuk sikintilar yasanabilir.
+    - Her ekibe ayri bir klasor tahsis ederek sikintilarin cogunu ortadan kaldiririz.
+    - Her ekibe proje bazli klasorde olsturabiliriz.
+    - K8s cluster i file server olarak dusunursek, namespace de bu fileserver icindeki klasorler olarak dusunebiliriz.
+    - Kaynak adlarin namespace icinde benzersiz olmasi gerekir. Namespaceler birbiri icine yerlestirilemez. Her Kubernetes kaynagi yalnizca bir namespace icinde olabilir.
+    - Namespace cluster kaynaklarini birden cok kullanici arasinda bölmeye imkan verir.
+    - Varsayilan olarak 4 namespace oludur:
+        1. default
+        2. kube-node-lease
+        3. kube-public
+        4. kube-system
+    - aksi belirtilmedikce kubectl komutlari default namespace de calisir.
+
+    - kubectl get pods --namespace-system
+    - k get pods --all-namespaces
+    - k create namespace app1 (app1 namespaceini olustur)
+    - k exec -it namespacepod -n development --sh (development namespace inde calistir)
+    - k config set-context --current --namespace=devolepment (varsayilan development namespace olur)
+    - k delete namespaces development (development namespace ini siler)
