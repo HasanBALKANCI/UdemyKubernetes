@@ -23,3 +23,5 @@ kubectl delete service "servis_ismi"
 
 Ör: kubectl delete service backend
 ```
+
+* ClusterIP (ayri deploymentlardaki podlarin iletisimi), NodePort (disardan podlara erisim), LoadBalancer(worker nodlarin onune, cloud providerlardan baglantida saglanir  ), ExternalName ()
